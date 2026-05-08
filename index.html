@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dominik Bressem — IT-Service</title>
+  <meta name="description" content="Professioneller privater IT-Service von Dominik Bressem. PC-Aufbau, Fehleranalyse, Reparatur, Konsolenservice, Netzwerkeinrichtung. 7 Jahre Erfahrung.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --bg:       #0c0c0c;
+      --surface:  #141414;
+      --surface2: #1c1c1c;
+      --border:   rgba(255,255,255,0.07);
+      --text:     #eeebe6;
+      --muted:    rgba(238,235,230,0.44);
+      --accent:   #c8f542;
+      --accent-h: #b0d930;
+      --max:      1100px;
+    }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--accent); color: #0c0c0c; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+
+    /* NAV */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(12,12,12,0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 20px; }
+    .nav-brand { font-size: 14px; font-weight: 600; letter-spacing: -0.2px; white-space: nowrap; }
+    .nav-brand span { color: var(--muted); font-weight: 400; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 13px; color: var(--muted); font-weight: 500; transition: color .15s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent); color: #0c0c0c;
+      padding: 8px 16px; border-radius: 8px;
+      font-size: 13px; font-weight: 700;
+      transition: background .15s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--accent-h); }
+
+    /* HERO */
+    .hero { padding: 100px 0 88px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--border); border-radius: 99px;
+      padding: 5px 14px; font-size: 12px; color: var(--muted); font-weight: 500;
+      margin-bottom: 32px;
+    }
+    .hero-badge::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--accent); flex-shrink:0; }
+    h1 {
+      font-size: clamp(3rem, 5.5vw, 5.4rem);
+      font-weight: 700; line-height: 1.0;
+      letter-spacing: -2.5px;
+      margin-bottom: 24px;
+    }
+    h1 em { font-style: normal; color: var(--muted); }
+    .hero-sub {
+      font-size: 17px; color: var(--muted);
+      max-width: 50ch; margin-bottom: 40px; line-height: 1.75;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 64px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 22px; border-radius: 10px;
+      font-size: 14px; font-weight: 600; transition: .15s;
+    }
+    .btn-p { background: var(--accent); color: #0c0c0c; }
+    .btn-p:hover { background: var(--accent-h); }
+    .btn-s { border: 1px solid var(--border); color: var(--text); }
+    .btn-s:hover { background: var(--surface); border-color: rgba(255,255,255,0.14); }
+    .hero-stats {
+      display: inline-flex;
+      border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+    }
+    .hstat { padding: 18px 32px; border-right: 1px solid var(--border); }
+    .hstat:last-child { border-right: none; }
+    .hstat strong { display:block; font-size:26px; font-weight:700; letter-spacing:-1px; line-height:1; margin-bottom:4px; }
+    .hstat span { font-size:12px; color:var(--muted); font-weight:500; }
+
+    /* SECTION BASE */
+    .sec { padding: 80px 0; border-top: 1px solid var(--border); }
+    .sec-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 44px; flex-wrap: wrap; }
+    .sec-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    h2 { font-size: clamp(1.9rem, 2.8vw, 2.6rem); font-weight: 700; letter-spacing: -1px; line-height: 1.08; }
+    .sec-note { font-size: 14px; color: var(--muted); max-width: 44ch; line-height: 1.7; }
+
+    /* LEISTUNGEN */
+    .grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+    .svc { background: var(--surface); padding: 30px; transition: background .2s; }
+    .svc:hover { background: var(--surface2); }
+    .svc-n { font-size: 11px; font-weight: 700; letter-spacing:.1em; color: var(--muted); margin-bottom: 20px; }
+    .svc h3 { font-size: 15px; font-weight: 600; letter-spacing: -.2px; margin-bottom: 10px; }
+    .svc p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* ÜBER MICH */
+    .about-g { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 20px; }
+    .about-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 40px; }
+    .about-card p { font-size: 14px; color: var(--muted); line-height: 1.8; margin-top: 16px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .tag { font-size: 12px; font-weight: 500; color: var(--muted); border: 1px solid var(--border); border-radius: 6px; padding: 5px 11px; }
+    .stats-g { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-content: start; }
+    .sbox { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+    .sbox strong { display:block; font-size:2rem; font-weight:700; letter-spacing:-1px; color:var(--accent); line-height:1; margin-bottom:5px; }
+    .sbox span { font-size:12px; color:var(--muted); font-weight:500; }
+
+    /* ABLAUF */
+    .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+    .step { background: var(--surface); padding: 28px; }
+    .step-n { font-size: 11px; font-weight: 700; letter-spacing:.1em; color: var(--accent); margin-bottom: 16px; }
+    .step h3 { font-size: 14px; font-weight: 600; letter-spacing:-.2px; margin-bottom: 8px; }
+    .step p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* KONTAKT */
+    .k-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; }
+    .k-top { padding: 52px; border-bottom: 1px solid var(--border); }
+    .k-top h2 { margin-top: 10px; margin-bottom: 14px; }
+    .k-top p { font-size: 15px; color: var(--muted); max-width: 50ch; line-height: 1.75; margin-bottom: 36px; }
+    .k-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .kb {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 13px 22px; border-radius: 10px;
+      font-size: 14px; font-weight: 600; transition: .15s;
+    }
+    .kb-p { background: var(--accent); color: #0c0c0c; }
+    .kb-p:hover { background: var(--accent-h); }
+    .kb-s { border: 1px solid var(--border); background: var(--surface2); }
+    .kb-s:hover { border-color: rgba(255,255,255,.16); background: #222; }
+
+    /* IMPRESSUM */
+    .imp { padding: 36px 52px; }
+    .imp-label { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+    .imp-g { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+    .imp-col h4 { font-size: 11px; font-weight: 700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+    .imp-col p { font-size: 13px; color: var(--muted); line-height: 1.8; }
+    .imp-col a { transition: color .15s; }
+    .imp-col a:hover { color: var(--accent); }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 22px 0; }
+    .foot { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .foot p, .foot a { font-size: 12px; color: var(--muted); }
+    .foot a:hover { color: var(--text); }
+
+    /* RESPONSIVE */
+    @media(max-width:960px) {
+      .grid { grid-template-columns: repeat(2,1fr); }
+      .about-g { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: repeat(2,1fr); }
+      .imp-g { grid-template-columns: repeat(2,1fr); }
+    }
+    @media(max-width:640px) {
+      .nav-links { display:none; }
+      h1 { letter-spacing:-1.5px; }
+      .hero { padding: 60px 0 52px; }
+      .hero-stats { flex-direction:column; display:flex; width:100%; }
+      .hstat { border-right:none; border-bottom:1px solid var(--border); }
+      .hstat:last-child { border-bottom:none; }
+      .grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .stats-g { grid-template-columns: 1fr 1fr; }
+      .k-top { padding: 28px; }
+      .imp { padding: 28px; }
+      .imp-g { grid-template-columns: 1fr; }
+      .sec-top { flex-direction:column; align-items:flex-start; }
+      .wrap { padding: 0 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="nav-brand">Dominik Bressem <span>/ IT-Service</span></div>
+      <div class="nav-links">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#ueber-mich">Über mich</a>
+        <a href="#ablauf">Ablauf</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+      <a href="#kontakt" class="nav-cta">Anfrage stellen</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-badge">Privater IT-Service &mdash; Verfügbar ab sofort</div>
+      <h1>IT-Probleme gelöst.<br><em>Ohne Umwege.</em></h1>
+      <p class="hero-sub">Von der Fehlerdiagnose bis zur vollständigen PC-Konfiguration &mdash; schnell, transparent und auf Augenhöhe erklärt.</p>
+      <div class="hero-btns">
+        <a href="mailto:Bressemdominik@gmail.com" class="btn btn-p">Anfrage per E-Mail</a>
+        <a href="#leistungen" class="btn btn-s">Leistungsübersicht</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><strong>7+</strong><span>Jahre Erfahrung</span></div>
+        <div class="hstat"><strong>6</strong><span>Leistungsbereiche</span></div>
+        <div class="hstat"><strong>Privat</strong><span>Direkter Service</span></div>
+        <div class="hstat"><strong>Fair</strong><span>Transparente Preise</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="leistungen">
+    <div class="wrap">
+      <div class="sec-top">
+        <div>
+          <div class="sec-label">Leistungen</div>
+          <h2>Was ich anbiete</h2>
+        </div>
+        <p class="sec-note">Alle Leistungen werden sorgfältig, nachvollziehbar und mit klarer Rückmeldung erbracht.</p>
+      </div>
+      <div class="grid">
+        <div class="svc"><div class="svc-n">01</div><h3>PC-Zusammenstellung</h3><p>Individuelle Beratung zur Komponentenwahl nach Budget und Einsatzzweck, fachgerechter Aufbau sowie vollständige Ersteinrichtung des Systems.</p></div>
+        <div class="svc"><div class="svc-n">02</div><h3>Fehleranalyse</h3><p>Systematische Diagnose bei Abstürzen, Startproblemen, Leistungseinbrüchen und ungewöhnlichem Systemverhalten &mdash; inklusive verständlicher Erklärung der Ursache.</p></div>
+        <div class="svc"><div class="svc-n">03</div><h3>Fehlerbehebung</h3><p>Behebung von Software- und Hardwareproblemen, saubere Neuinstallation von Betriebssystem und Treibern sowie Entfernung von Schadsoftware.</p></div>
+        <div class="svc"><div class="svc-n">04</div><h3>Teileaustausch</h3><p>Fachgerechter Austausch von Speicher, SSD, Netzteil, Grafikkarte oder Lüfter &mdash; inklusive anschließendem Funktionstest.</p></div>
+        <div class="svc"><div class="svc-n">05</div><h3>Konsolenreparatur</h3><p>Diagnose und Reparatur bei PlayStation, Xbox und Nintendo Switch. Reinigung, Lüfterwechsel sowie Austausch defekter Bauteile.</p></div>
+        <div class="svc"><div class="svc-n">06</div><h3>Router &amp; Heimnetzwerk</h3><p>Einrichtung und Optimierung von Internet, WLAN und Heimnetzwerk inklusive Grundabsicherung und Konfiguration aller angebundenen Endgeräte.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="ueber-mich">
+    <div class="wrap">
+      <div class="about-g">
+        <div class="about-card">
+          <div class="sec-label">Über mich</div>
+          <h2 style="margin-top:10px">Erfahrung, die man merkt.</h2>
+          <p>Ich bin Dominik Bressem, Fachinformatiker für Systemintegration mit über sieben Jahren praktischer Berufserfahrung. Ich helfe Privatpersonen bei IT-Problemen aller Art &mdash; zuverlässig, ehrlich und ohne unnötigen Aufwand.</p>
+          <p>Mein Anspruch: Du verstehst nicht nur was repariert wurde, sondern auch warum es defekt war. Transparenz und klare Kommunikation sind für mich selbstverständlich.</p>
+          <div class="tags">
+            <span class="tag">Windows 10 / 11</span>
+            <span class="tag">Hardware</span>
+            <span class="tag">Netzwerk</span>
+            <span class="tag">Fehlerdiagnose</span>
+            <span class="tag">Systemintegration</span>
+            <span class="tag">Konsolenservice</span>
+          </div>
+        </div>
+        <div class="stats-g">
+          <div class="sbox"><strong>7+</strong><span>Jahre Berufserfahrung</span></div>
+          <div class="sbox"><strong>6</strong><span>Leistungsbereiche</span></div>
+          <div class="sbox"><strong>Privat</strong><span>Direkter Ansprechpartner</span></div>
+          <div class="sbox"><strong>Fair</strong><span>Keine versteckten Kosten</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="ablauf">
+    <div class="wrap">
+      <div class="sec-top">
+        <div>
+          <div class="sec-label">Ablauf</div>
+          <h2>So funktioniert es</h2>
+        </div>
+        <p class="sec-note">Klar strukturiert &mdash; vom ersten Kontakt bis zur finalen Übergabe.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-n">SCHRITT 01</div><h3>Kontaktaufnahme</h3><p>Kurze Schilderung des Problems per E-Mail, Telefon oder WhatsApp &mdash; ich melde mich zeitnah zurück.</p></div>
+        <div class="step"><div class="step-n">SCHRITT 02</div><h3>Diagnose &amp; Einschätzung</h3><p>Ich analysiere das Problem und gebe eine ehrliche Einschätzung zu Aufwand, Lösungsweg und Kosten.</p></div>
+        <div class="step"><div class="step-n">SCHRITT 03</div><h3>Durchführung</h3><p>Nach deiner Freigabe führe ich die Arbeit sorgfältig durch &mdash; vor Ort oder nach Abholung des Geräts.</p></div>
+        <div class="step"><div class="step-n">SCHRITT 04</div><h3>Übergabe</h3><p>Du erhältst dein Gerät zurück &mdash; mit einer verständlichen Erklärung was gemacht wurde und warum.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="kontakt">
+    <div class="wrap">
+      <div class="k-card">
+        <div class="k-top">
+          <div class="sec-label">Kontakt</div>
+          <h2>Bereit loszulegen?</h2>
+          <p>Schildere mir dein Problem kurz &mdash; ich analysiere es und melde mich mit einer ehrlichen Einschätzung. Kein Auftrag ohne deine ausdrückliche Freigabe.</p>
+          <div class="k-btns">
+            <a href="mailto:Bressemdominik@gmail.com" class="kb kb-p">&#9993;&nbsp; E-Mail schreiben</a>
+            <a href="tel:+4915172163948" class="kb kb-s">&#9742;&nbsp; 0151 72163948</a>
+            <a href="https://wa.me/4915172163948" class="kb kb-s">&#8599;&nbsp; WhatsApp</a>
+          </div>
+        </div>
+        <div class="imp" id="impressum">
+          <div class="imp-label">Impressum</div>
+          <div class="imp-g">
+            <div class="imp-col">
+              <h4>Anbieter</h4>
+              <p>Dominik Bressem<br>88512 Mengen<br>Deutschland</p>
+            </div>
+            <div class="imp-col">
+              <h4>Kontakt</h4>
+              <p>
+                <a href="mailto:Bressemdominik@gmail.com">Bressemdominik@gmail.com</a><br>
+                <a href="tel:+4915172163948">0151 72163948</a>
+              </p>
+            </div>
+            <div class="imp-col">
+              <h4>Hinweis</h4>
+              <p>Diese Website wird privat betrieben. Es handelt sich um keine gewerbliche Tätigkeit im Sinne des Handelsgesetzbuchs. Alle Leistungen erfolgen auf privater Basis.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <p>&copy; 2026 Dominik Bressem IT-Service</p>
+      <a href="#impressum">Impressum</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
